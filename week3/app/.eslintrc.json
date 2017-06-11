@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": ["warn"],
+    "indent": ["error", 4],
+    "max-len": ["error", 200],
+    "new-cap": ["error", { "capIsNewExceptionPattern": "^express\\.." }]
+  },
+  "globals": {
+       "_": true
+   }
+}

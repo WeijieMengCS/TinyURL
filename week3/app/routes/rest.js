@@ -12,14 +12,14 @@ router.post("/urls", jsonParser, function(req, res) {
     });
 });
 
-router.get("/urls/:shortUrl", function(req, res) {
+router.get("/urls/:shortUrl", function getShortUrl(req, res) {
     var shortUrl = req.params.shortUrl;
 
-    var longUrl = urlService.getLongUrl(shortUrl, function(url) {
+    urlService.getLongUrl(shortUrl, function callback(url) {
         res.json({
             shortUrl: shortUrl,
             longUrl: url.longUrl
         });
     });
 });
-module.exports = router; //return to outside
+module.exports = router; // return to outside

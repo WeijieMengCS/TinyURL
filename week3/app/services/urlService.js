@@ -1,4 +1,10 @@
 const UrlModel = require('../models/urlmodel');
+const redis = require('redis');
+
+const port = process.env.REDIS_PORT_6379_TCP_PORT;
+const host = process.env.REDIS_PORT_6379_TCP_ADDR;
+
+var redisClient = redis.createClient(port, host);
 
 let encode = [];
 
@@ -27,7 +33,7 @@ const getShortUrl = function(longUrl, callback) {
             callback(data);
         } else {
             // undefined
-            console.log("not found in database");
+            console.log('not found in database');
             generateShortUrl((shortUrl) => {
                 const url = new UrlModel({
                     shortUrl,
@@ -42,9 +48,9 @@ const getShortUrl = function(longUrl, callback) {
 
 var generateShortUrl = function(callback) {
     UrlModel.count({}, (err, num) => {
-        console.log(num + "#####");
+        console.log(num + '#####');
         callback(convertTo62(num));
-        console.log("here===");
+        console.log('here===');
     });
 };
 

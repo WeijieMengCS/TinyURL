@@ -1,12 +1,18 @@
-var express = require('express');
-var router = express.Router();
-var urlService = require('../services/urlService');
-var path = require('path');
+const express = require('express');
+// const urlService = require('../services/urlService');
 
-router.get("/", function(req, res) {
-  res.sendFile("index.html", {
-    root: path.join(__dirname, '../public/views/')
-  });
+const router = express.Router();
 
-});
-module.exports = router; //return to outside
+
+const path = require('path');
+
+router.get('/', function callback(req, res) {
+        res.sendFile('index.html', {
+            root: path.join(__dirname, '../public/views/')
+        });
+
+    }
+
+);
+
+module.exports = router; // return to outside

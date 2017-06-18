@@ -1,10 +1,11 @@
-//design table
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+// design table
+const mongoose = require('mongoose');
 
-var UrlSchema = new Schema({
-  shortUrl: String,
-  longUrl: String
+const Schema = mongoose.Schema;
+
+const UrlSchema = new Schema({
+    shortUrl: String,
+    longUrl: String,
 
 });
 

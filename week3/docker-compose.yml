@@ -1,31 +1,34 @@
-webservercontainer:
-  build:./nginx
+nginx:
+  build: ./nginx
   ports:
-    -"3000:80"
+    - "80:80"
   links:
-    -"tinyUrl1:app1"
-    -"tinyUrl2:app2"
-    -"tinyUrl3:app3"
-tinyUrl1:
+    - app1:app1
+    - app2:app2
+    - app3:app3
+
+app1:
   build: ./app
   ports:
-    -"3000"
-
+    - "3000"
   links:
-    -"cachecontainer:redis"
-tinyUrl2:
+    - redis
+
+app2:
   build: ./app
   ports:
-    -"3000"
-
+    - "3000"
   links:
-    -"cachecontainer:redis"
-tinyUrl3:
+    - redis
+
+app3:
   build: ./app
   ports:
-    -"3000"
-
+    - "3000"
   links:
-    -"cachecontainer:redis"
-cachecontainer:
-  image:redis
+    - redis
+
+redis:
+  image: redis
+  ports:
+        - "6379"
